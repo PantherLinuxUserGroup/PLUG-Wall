@@ -1,5 +1,6 @@
 function route(handle, pathname, request, response) {
-    if( handle[pathname] ) {
+    // check if pathname is to be handled
+    if( typeof handle[pathname] === 'function' ) {
         handle[pathname](request, response);
     } else {
         response.writeHead(404, {"Content-Type": "text/plain"});
