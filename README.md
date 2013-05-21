@@ -22,8 +22,8 @@ To get the latest updates from the main project repo
 ```bash
 # checkout your master branch
 git checkout master
-# pull from upstream remote which is the main project repo
-git pull master upstream
+# pull from upstream remote into your master branch
+git pull upstream master
 ```
 To work on a new feature, create a branch on your repo
 ```bash
