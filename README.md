@@ -30,3 +30,20 @@ To work on a new feature, create a branch on your repo
 # checkout a new branch
 git checkout -b <name-of-branch>
 ```
+
+Running the server
+------------------
+To run the server you will need to install node.js
+```
+# Assuming you are using Ubuntu
+sudo apt-get install nodejs
+```
+Once you installed node.js and you cloned the project to your computer as described in the section about contributing,
+you can run the server.
+```
+# Change your working directory to the root of the project
+cd PLUG-Wall
+# Running the server
+nodejs src/server/index.js
+```
+Open your favorite browser and navigate to http://0.0.0.0:1337/
