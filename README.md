@@ -3,6 +3,8 @@ PLUG-Wall
 
 Panther Linux User Group's Summer Open Source Project. 
 
+PLUG-Wall is an embeddable JavaScript based message board that can be included on any of your websites. There is two components, a server side which will store and recieve posts from the user and a client side script which will generate the HTML for the message board and allow users to send and get posts from the server.
+
 Contributing
 ------------
 To contribute to this project, press the fork button above on Github. This will be your own personal git repo to work on. 
@@ -35,8 +37,11 @@ Running the server
 ------------------
 To run the server you will need to install node.js
 ```
-# Assuming you are using Ubuntu
+# Assuming you are using Ubuntu or Debian based distros
 sudo apt-get install nodejs
+
+# Arch Linux
+sudo pacman -S nodejs
 ```
 Once you installed node.js and you cloned the project to your computer as described in the section about contributing,
 you can run the server.
@@ -45,5 +50,8 @@ you can run the server.
 cd PLUG-Wall
 # Running the server
 nodejs src/server/index.js
+
+# or sometimes node.js is installed as node
+node src/server/index.js
 ```
 Open your favorite browser and navigate to http://0.0.0.0:1337/
