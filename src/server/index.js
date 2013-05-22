@@ -4,6 +4,7 @@ var board = require('./board');
 
 // handle the board
 var handle = {};
+handle['/'] = board.handler;
 handle['/board/'] = board.handler; 
 
 server.start(router.route, handle);

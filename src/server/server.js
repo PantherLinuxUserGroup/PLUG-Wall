@@ -8,8 +8,10 @@ function start(route, handle) {
         route(handle, pathname, req, res);
     }
 
-    http.createServer(onRequest).listen(1337);
+    var port = 1337;
+    http.createServer(onRequest).listen(port);
+
+    console.log("Server is running on http://0.0.0.0:" + port + "/");
 }
 
 exports.start = start;
-console.log("Server is running");
