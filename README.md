@@ -33,6 +33,20 @@ To work on a new feature, create a branch on your repo
 git checkout -b <name-of-branch>
 ```
 
+The branch you have just created is where you will work on. Working on a branch allows you to keep your master as a mirror of the main project's master. 
+
+To locally merge your branch with the main project's upstream use
+```bash
+git pull upstream <name-of-branch>
+```
+
+Then push your branch to your fork.
+```bash
+git push origin <name-of-branch>
+```
+
+You can now send a Pull Request from Github selecting your branch and to merge with the master.
+
 Running the server
 ------------------
 To run the server you will need to install node.js
