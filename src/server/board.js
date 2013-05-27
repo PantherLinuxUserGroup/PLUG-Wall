@@ -1,14 +1,22 @@
-function handler(request, response) {
-    switch(request.method) {
-        case 'POST':
-            //Handle a message post
-            break;
-        case 'GET':
-            // Retrieve messages
-            response.writeHead(200, {'Content-Type': 'text/plain'});
-            response.end("GET request");
-            break;
-    }
+/*
+ * Board constructor
+ */
+function Board(name, config) {
+
+    //initialize board and posts
+    this.name = name;
+    this.config = config;
+
 }
 
-exports.handler = handler;
+Board.prototype.getMessages = function(response) {
+    // Retrieve messages
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.end("GET request");
+};
+
+Board.prototype.postMessage = function(request, response) {
+
+}
+
+module.exports = Board;

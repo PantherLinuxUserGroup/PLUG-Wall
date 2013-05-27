@@ -1,7 +1,15 @@
-function route(handle, pathname, request, response) {
+function route(boards, pathname, request, response) {
     // check if pathname is to be handled
-    if( typeof handle[pathname] === 'function' ) {
-        handle[pathname](request, response);
+    if( boards[pathname] ) {
+        var board = boards[pathname];
+        switch(request.method) {
+            case 'GET':
+                board.getMessages(response);
+                break;
+            case 'POST':
+                board.postMessage(request, response);
+                break;
+        }
     } else {
         response.writeHead(404, {"Content-Type": "text/plain"});
         response.write("404 Not found");

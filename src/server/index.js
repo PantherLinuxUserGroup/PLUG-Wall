@@ -1,13 +1,12 @@
 var server = require('./server');
 var router = require('./router');
-var board = require('./board');
+var Board = require('./board');
 var config = require('./config.json');
 
-// handle the board
-var handle = {};
+var boards = {};
 
 for (var i = 0; i < config.boards.length; i++) {
-    handle[config.boards[i]] = board.handler;
+    boards[config.boards[i]] = new Board();
 }
 
-server.start(router.route, handle, config.port);
+server.start(router.route, boards, config.port);
