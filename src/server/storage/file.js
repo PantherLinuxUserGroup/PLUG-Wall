@@ -1,11 +1,12 @@
+var fs = require('fs');
 /*
  * Basic API for storing and retrieving posts in simple files
  */
-function storeMessage(message, user) {
+function storeMessage(file, message, user) {
 
 }
 
-function getMessages() {
+function getMessages(file, callback) {
 
 }
 
