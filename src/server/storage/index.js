@@ -1,5 +1,5 @@
 var file = require('./file');
-var memory = require('./memory'
+var memory = require('./memory');
 
 var storageFactory = {};
 storageFactory['file'] = file;
