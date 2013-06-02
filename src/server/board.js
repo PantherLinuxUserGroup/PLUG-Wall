@@ -23,6 +23,21 @@ Board.prototype.getMessages = function(response) {
 };
 
 Board.prototype.postMessage = function(request, response) {
+    var self = this;
+    request.content = "";
+    request.addListener("data", function(chunk) {
+        request.content += chunk.toString();
+    });
+
+    request.addListener("end", function() {
+        try {
+            var post = JSON.parse(request.content);
+        }catch(err) {
+            console.error("Bad request:" + err);
+            return;
+        }
+        self.storage.storeMessage(self.name, post.message, post.user);
+    });
 
 }
 
