@@ -2,13 +2,44 @@ var fs = require('fs');
 /*
  * Basic API for storing and retrieving posts in simple files
  */
-function storeMessage(file, message, user) {
+function storeMessage(name, message, user) {
+
+    getMessages(name, function(err, data) {
+        if(err) {
+          console.error("File error: " + err);
+        }
+        
+        var post = {};
+        post.message = message;
+        post.user = user;
+        post.date = new Date();
+        data.push(post);
+
+        fs.writeFile( name, JSON.stringify(data), 'utf8', function(err) {
+            if(err) {
+                console.error("File error: "  + err);
+                return;
+            }
+            // Data was written
+        });
+    });
+
 
 }
 
-function getMessages(file, callback) {
-
+function getMessage(name, callback) {
+    fs.readFile( name, 'utf8', function(err, data) {
+        if(err) {
+            if(err.errno = 34) {
+                callback(undefined, []);
+                return
+            }
+            callback(err);
+            return;
+        }
+        callback(err, JSON.parse(data));
+    });
 }
 
 exports.storeMessage = storeMessage;
-exports.getMessages = getMessages;
+exports.getMessage = getMessage;

@@ -1,9 +1,9 @@
 {
-    "port": 1337,
-    "boards": [
-        {
-            "name": "/",
-            "storage": "memory"
-        }
-        ]
+  "port": 1337,
+  "boards": [
+    {
+      "name": "/",
+      "storage": "memory"
+    }
+  ]
 }
