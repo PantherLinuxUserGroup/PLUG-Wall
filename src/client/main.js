@@ -13,16 +13,23 @@
 
         node.className = "plug-board";
 
-        node.appendChild(document.createTextNode("A post"));
+        xhr({
+              method: 'GET',
+              url: feed
+            }, handleResponse);
 
     };
+    
+    function handleResponse(response) {
+        var posts = response;
+    }
 
     function xhr(options , callback) {
         var req = new XMLHttpRequest();
         req.open(options.method, options.url, true);
         req.onload = callback;
 
-        xhr.send(options.data);
+        req.send(options.data);
 
     }
 
