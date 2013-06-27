@@ -17,6 +17,7 @@ function storeMessage(name, message, user) {
 function getMessage(name, callback) {
     if( !boards[name] ) {
         callback(undefined, []);
+        return;
     }
     callback(undefined, boards[name]);
 

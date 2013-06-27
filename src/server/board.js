@@ -12,13 +12,23 @@ function Board(name, storage, config) {
 
 Board.prototype.getMessages = function(response) {
     // Retrieve messages
+    self = this;
     this.storage.getMessage(this.name, function(err, messages) {
         if( err ) {
             response.writeHead(500, {'Content-Type': 'text/plain'});
             response.end("ERROR 500");
+            return;
         }
-        response.writeHead(200, {'Content-Type': 'application/json'});
-        response.end(JSON.stringify(messages));
+        var body = JSON.stringify(messages);
+        console.log("Name: " + self.name);
+        console.log("Message: " + body);
+        response.writeHead(200, {
+                          'Content-Type': 'application/json',
+                          'Content-Length': Buffer.byteLength(body),
+                          'Access-Control-Allow-Origin': '*',
+                          'Access-Control-Allow-Headers': 'X-Requested-With'
+                          });
+        response.end(body);
     });
 };
 
