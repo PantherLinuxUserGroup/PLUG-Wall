@@ -44,6 +44,7 @@ Board.prototype.postMessage = function(request, response) {
             return;
         }
         self.storage.storeMessage(self.name, post.message, post.user);
+        response.end();
     });
 
 }
