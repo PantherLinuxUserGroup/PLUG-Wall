@@ -1,0 +1,25 @@
+.plug-board {
+  background: #ffffff;
+}
+
+.plug-post {
+  border: 1px solid #bbb;
+  padding: 10px 10px 0px 10px;
+  margin-bottom: 5px;
+}
+
+.plug-text {
+  width: 100%;
+}
+
+.plug-form label {
+  margin-right: 15px;
+}
+
+.plug-post-date {
+  float: right;
+}
+
+.plug-form div {
+  margin-bottom: 5px;
+}
