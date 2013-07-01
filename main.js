@@ -71,7 +71,7 @@
 
     function createPosts(posts) {
         var post;
-        posts.innerHTML = "";
+        postsNode.innerHTML = "";
 
         for(var i = 0; i < posts.length; i++) {
             post = document.createElement("div");
