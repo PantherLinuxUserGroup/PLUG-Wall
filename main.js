@@ -2,6 +2,8 @@
 
     var node,
         url;
+    var headerNode = document.createElement("div");
+    var postsNode = document.createElement("div");
     var form = document.createElement("div");
     var topCon = document.createElement("div");
     var botCon = document.createElement("div");
@@ -10,6 +12,8 @@
     var text = document.createElement("textarea");
     var send = document.createElement("button");
 
+    headerNode.className = "plug-header";
+    postsNode.className = "plug-posts";
     form.className = "plug-post plug-form";
     username.className = "plug-name";
     text.className = "plug-text";
@@ -39,7 +43,19 @@
             throw new Error("[PLUG-Wall] Not a valid HTML element id");
         }
 
+        var splitUrl = feed.split('/');
+        var name = document.createElement("h1");
+        name.appendChild(document.createTextNode("#" + splitUrl[splitUrl.length - 1]));
+
+
         node.className = "plug-board";
+
+        headerNode.appendChild(name);
+
+        node.appendChild(headerNode);
+        node.appendChild(postsNode);
+        node.appendChild(form);
+        postsNode.appendChild(document.createTextNode("No posts yet!"));
 
         xhr({
               method: 'GET',
@@ -55,7 +71,7 @@
 
     function createPosts(posts) {
         var post;
-        node.innerHTML = "";
+        posts.innerHTML = "";
 
         for(var i = 0; i < posts.length; i++) {
             post = document.createElement("div");
@@ -76,10 +92,9 @@
             post.appendChild(user);
             post.appendChild(date);
 
-            node.appendChild(post);
+            postsNode.appendChild(post);
         }
 
-        node.appendChild(form);
     }
 
     function sendPost() {

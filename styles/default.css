@@ -1,9 +1,9 @@
 .plug-board {
   background: #ffffff;
+  border: 1px black solid;
 }
 
 .plug-post {
-  border: 1px solid #bbb;
   padding: 10px 10px 0px 10px;
   margin-bottom: 5px;
 }
@@ -22,4 +22,16 @@
 
 .plug-form div {
   margin-bottom: 5px;
+}
+
+.plug-header {
+  border-bottom: 1px solid black;
+}
+
+.plug-form {
+  border-top: 1px solid black;
+}
+
+.plug-header h1 {
+  margin: 0px;
 }

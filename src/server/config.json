@@ -2,7 +2,7 @@
   "port": 1337,
   "boards": [
     {
-      "name": "/",
+      "name": "/board",
       "storage": "memory"
     }
   ]
