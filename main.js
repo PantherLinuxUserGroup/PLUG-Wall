@@ -73,7 +73,7 @@
         var post;
         postsNode.innerHTML = "";
 
-        for(var i = 0; i < posts.length; i++) {
+        for(var i = posts.length - 1; i >= 0; i--){
             post = document.createElement("div");
             var body = document.createElement("div");
             var user = document.createElement("span");

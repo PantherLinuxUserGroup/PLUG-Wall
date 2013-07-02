@@ -26,6 +26,9 @@
 
 .plug-header {
   border-bottom: 1px solid black;
+  background-color: #2B4E78;
+  padding-left: 15px;
+  color: white;
 }
 
 .plug-form {
