@@ -41,10 +41,25 @@ Board.prototype.postMessage = function(request, response) {
             var post = JSON.parse(request.content);
         }catch(err) {
             console.error("Bad request:" + err);
+            var errMsg = '{"status":"error"}';
+            response.writeHead(500, {
+                          'Content-Type': 'application/json',
+                          'Content-Length': Buffer.byteLength(errMsg),
+                          'Access-Control-Allow-Origin': '*',
+                          'Access-Control-Allow-Headers': 'X-Requested-With'
+                        });
+            response.end(errMsg);
             return;
         }
         self.storage.storeMessage(self.name, post.message, post.user);
-        response.end();
+        var msg = '{"status": "success"}';
+        response.writeHead(200, {
+                        'Content-Type': 'application/json',
+                        'Content-Length': Buffer.byteLength(msg),
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Headers': 'X-Requested-With'
+                      });
+        response.end(msg);
     });
 
 }

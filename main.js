@@ -14,7 +14,7 @@
 
     headerNode.className = "plug-header";
     postsNode.className = "plug-posts";
-    form.className = "plug-post plug-form";
+    form.className = "plug-form";
     username.className = "plug-name";
     text.className = "plug-text";
     send.className = "plug-button";
@@ -57,15 +57,19 @@
         node.appendChild(form);
         postsNode.appendChild(document.createTextNode("No posts yet!"));
 
-        xhr({
-              method: 'GET',
-              url: feed
-            }, handleResponse);
-
+        getPosts();
     };
-    
-    function handleResponse() {
-        var posts = JSON.parse(this.responseText);
+     
+    function getPosts() {
+        xhr({
+            method: 'GET',
+            url: url
+        }, handleResponse);
+    }
+
+   
+    function handleResponse(xhr) {
+        var posts = JSON.parse(xhr.responseText);
         createPosts(posts);
     }
 
@@ -105,15 +109,22 @@
             method: "POST",
             url: url,
             data: JSON.stringify(data) 
-        }); 
+        }, function() { getPosts(); }); 
 
     }
 
     function xhr(options , callback) {
         var req = new XMLHttpRequest();
         req.open(options.method, options.url, true);
-        req.onload = callback;
-
+        req.onreadystatechange = function() {
+            if(req.readyState == 4) {
+              if( req.status == 200) {
+                  callback(req);
+              }else {
+                  //Some error
+              }
+            }
+        }
         req.send(options.data);
 
     }
