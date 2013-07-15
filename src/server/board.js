@@ -37,31 +37,43 @@ Board.prototype.postMessage = function(request, response) {
     });
 
     request.addListener("end", function() {
+	var msg;
         try {
             var post = JSON.parse(request.content);
         }catch(err) {
             console.error("Bad request:" + err);
-            var errMsg = '{"status":"error"}';
+            msg = '{"status":"error"}';
             response.writeHead(500, {
-                          'Content-Type': 'application/json',
-                          'Content-Length': Buffer.byteLength(errMsg),
-                          'Access-Control-Allow-Origin': '*',
-                          'Access-Control-Allow-Headers': 'X-Requested-With'
-                        });
-            response.end(errMsg);
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(msg),
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'X-Requested-With'
+            });
+            response.end(msg);
             return;
         }
-        self.storage.storeMessage(self.name, post.message, post.user);
-        var msg = '{"status": "success"}';
+
+	if(!post.message) {
+	    msg = '{"status":"error", "toString":"No message body found."}'
+	    response.writeHead(400, {
+		'Content-Type': 'application/json',
+		'Content-Length': Buffer.byteLength(msg),
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'X-Requested-With'
+	    });
+	    response.end(msg);
+	    return;
+	}
+        self.storage.storeMessage(self.name, post.message, post.user || "Anonymous");
+        msg = '{"status": "success"}';
         response.writeHead(200, {
-                        'Content-Type': 'application/json',
-                        'Content-Length': Buffer.byteLength(msg),
-                        'Access-Control-Allow-Origin': '*',
-                        'Access-Control-Allow-Headers': 'X-Requested-With'
-                      });
+            'Content-Type': 'application/json',
+            'Content-Length': Buffer.byteLength(msg),
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'X-Requested-With'
+        });
         response.end(msg);
     });
-
 }
 
 module.exports = Board;
