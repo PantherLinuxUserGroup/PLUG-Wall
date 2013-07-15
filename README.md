@@ -37,7 +37,8 @@ The branch you have just created is where you will work on. Working on a branch 
 
 To locally merge your branch with the main project's upstream use
 ```bash
-git pull upstream <name-of-branch>
+# while in current branch
+git pull upstream master
 ```
 
 Then push your branch to your fork.
@@ -45,7 +46,7 @@ Then push your branch to your fork.
 git push origin <name-of-branch>
 ```
 
-You can now send a Pull Request from Github selecting your branch and to merge with the master.
+You can now send a Pull Request from Github selecting your branch and to merge with the master. The Pull Request will be reviewed and be merged if accepted.
 
 Running the server
 ------------------
