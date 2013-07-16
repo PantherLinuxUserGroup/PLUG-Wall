@@ -8,6 +8,7 @@
     var topCon = document.createElement("div");
     var botCon = document.createElement("div");
     var label = document.createElement("label");
+    var errorLabel = document.createElement("label");
     var username = document.createElement("input");
     var text = document.createElement("textarea");
     var send = document.createElement("button");
@@ -25,6 +26,8 @@
     topCon.appendChild(label);
     topCon.appendChild(username);
     topCon.appendChild(text);
+    topCon.appendChild(errorLabel);
+
     botCon.appendChild(send);
 
     form.appendChild(topCon);
@@ -59,7 +62,7 @@
 
         getPosts();
     };
-     
+
     function getPosts() {
         xhr({
             method: 'GET',
@@ -67,7 +70,7 @@
         }, handleResponse);
     }
 
-   
+
     function handleResponse(xhr) {
         var posts = JSON.parse(xhr.responseText);
         createPosts(posts);
@@ -104,13 +107,19 @@
     function sendPost() {
         var data = {};
         data.user = username.value;
-        data.message = text.value; 
-        xhr({
-            method: "POST",
-            url: url,
-            data: JSON.stringify(data) 
-        }, function() { getPosts(); }); 
+        data.message = text.value;
 
+	if(data.message == null || data.message.trim() == "") {
+	    errorLabel.innerHTML = "";
+	    errorLabel.appendChild(document.createTextNode("Posts must have a message."));
+	}else {
+	    errorLabel.innerHTML = "";
+            xhr({
+		method: "POST",
+		url: url,
+		data: JSON.stringify(data)
+            }, function() { getPosts(); });
+	}
     }
 
     function xhr(options , callback) {
