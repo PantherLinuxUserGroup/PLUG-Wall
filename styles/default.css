@@ -35,3 +35,7 @@
 .plug-header h1 {
   margin: 0px;
 }
+
+.plug-error {
+  color: red;
+}

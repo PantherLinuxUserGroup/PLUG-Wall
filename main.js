@@ -8,7 +8,7 @@
     var topCon = document.createElement("div");
     var botCon = document.createElement("div");
     var label = document.createElement("label");
-    var errorLabel = document.createElement("label");
+    var errorLabel = document.createElement("div");
     var username = document.createElement("input");
     var text = document.createElement("textarea");
     var send = document.createElement("button");
@@ -19,6 +19,7 @@
     username.className = "plug-name";
     text.className = "plug-text";
     send.className = "plug-button";
+    errorLabel.className = "plug-error";
 
     label.appendChild(document.createTextNode("Name:"));
     send.appendChild(document.createTextNode("Send"));
