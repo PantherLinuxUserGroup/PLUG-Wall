@@ -84,11 +84,13 @@
         for(var i = posts.length - 1; i >= 0; i--){
             post = document.createElement("div");
             var body = document.createElement("div");
+	    var info = document.createElement("div");
             var user = document.createElement("span");
             var date = document.createElement("span");
 
-            post.className = "plug-post";
+            post.className = "plug-post appearDown";
             body.className = "plug-post-body";
+	    info.className = "plug-post-info";
             user.className = "plug-post-user";
             date.className = "plug-post-date";
 
@@ -96,9 +98,11 @@
             user.appendChild(document.createTextNode(posts[i].user));
             date.appendChild(document.createTextNode(posts[i].date));
 
+	    info.appendChild(user);
+	    info.appendChild(date);
+
             post.appendChild(body);
-            post.appendChild(user);
-            post.appendChild(date);
+	    post.appendChild(info);
 
             postsNode.appendChild(post);
         }
