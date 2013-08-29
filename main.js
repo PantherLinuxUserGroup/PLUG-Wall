@@ -88,7 +88,7 @@
             var user = document.createElement("span");
             var date = document.createElement("span");
 
-            post.className = "plug-post appearDown";
+            post.className = "plug-post";
             body.className = "plug-post-body";
 	    info.className = "plug-post-info";
             user.className = "plug-post-user";
@@ -119,6 +119,8 @@
 	    errorLabel.appendChild(document.createTextNode("Posts must have a message."));
 	}else {
 	    errorLabel.innerHTML = "";
+	    username.value ="";
+	    text.value = "";
             xhr({
 		method: "POST",
 		url: url,
