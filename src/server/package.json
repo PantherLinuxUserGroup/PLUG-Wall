@@ -1,8 +1,8 @@
 {
   "name": "PLUG-Wall",
-  "version": "0.0.1"
+  "version": "0.0.1",
   "description": "A simple JavaScript widget based message board",
   "dependencies": {
-
+    "moment": "2.1.0"
   }
 }

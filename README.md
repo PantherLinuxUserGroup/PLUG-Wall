@@ -58,6 +58,10 @@ sudo apt-get install nodejs
 # Arch Linux
 sudo pacman -S nodejs
 ```
+You will also need to install the server dependencies
+```
+cd PLUG-Wall/src/server && npm install
+```
 Once you installed node.js and you cloned the project to your computer as described in the section about contributing,
 you can run the server.
 ```
