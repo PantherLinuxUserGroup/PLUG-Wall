@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 /*
  * Board constructor
  */
@@ -18,7 +20,15 @@ Board.prototype.getMessages = function(response) {
             response.end("ERROR 500");
             return;
         }
-        var body = JSON.stringify(messages);
+
+        // Nasty cloning - Prevents global message data modification
+        msgs=JSON.parse(JSON.stringify(messages));
+        for (i = 0; i < msgs.length; i++)
+        {
+            msgs[i].date = moment(msgs[i].date).calendar();
+        }
+
+        var body = JSON.stringify(msgs);
         response.writeHead(200, {
                           'Content-Type': 'application/json',
                           'Content-Length': Buffer.byteLength(body),
