@@ -174,19 +174,19 @@
 
 @keyframes pushdown56 {
     from {
-	-webkit-transform: translateY(0);
+	-webkit-transform: translateY(-56px);
     }
     to {
-	-webkit-transform: translateY(56px);
+	-webkit-transform: translateY(0);
     }
 }
 
 @-moz-keyframes pushdown56 {
     from {
-	-webkit-transform: translateY(0);
+	-webkit-transform: translateY(-56px);
     }
     to {
-	-webkit-transform: translateY(56px);
+	-webkit-transform: translateY(0);
     }
 }
 
