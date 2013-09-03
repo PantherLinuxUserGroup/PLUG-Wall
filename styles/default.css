@@ -3,6 +3,10 @@
   border: 1px black solid;
 }
 
+.plug-posts {
+  overflow: auto;
+}
+
 .plug-post {
   border: solid black 1px;
   padding: 10px 0px 0px 0px;
