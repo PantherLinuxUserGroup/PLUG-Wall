@@ -12,6 +12,7 @@
     var username = document.createElement("input");
     var text = document.createElement("textarea");
     var send = document.createElement("button");
+    var rememberMe = document.createElement("input");
 
     headerNode.className = "plug-header";
     postsNode.className = "plug-posts";
@@ -20,12 +21,15 @@
     text.className = "plug-text";
     send.className = "plug-button";
     errorLabel.className = "plug-error";
+    rememberMe.type = "checkbox";
 
     label.appendChild(document.createTextNode("Name:"));
     send.appendChild(document.createTextNode("Send"));
 
     topCon.appendChild(label);
     topCon.appendChild(username);
+    topCon.appendChild(rememberMe);
+    topCon.appendChild(document.createTextNode("Remember me"));
     topCon.appendChild(text);
     topCon.appendChild(errorLabel);
 
@@ -81,7 +85,7 @@
         var post;
         postsNode.innerHTML = "";
 
-        for(var i = posts.length - 1; i >= 0; i--){
+        for(var i = posts.length - 1; i >= 0; i--) {
             post = document.createElement("div");
             var body = document.createElement("div");
 	    var info = document.createElement("div");
@@ -89,6 +93,7 @@
             var date = document.createElement("span");
 
             post.className = "plug-post";
+
             body.className = "plug-post-body";
 	    info.className = "plug-post-info";
             user.className = "plug-post-user";
@@ -105,6 +110,13 @@
 	    post.appendChild(info);
 
             postsNode.appendChild(post);
+	    if(i == posts.length -1) {
+	    	post.className = post.className + " appearDown";
+	    }
+	    else {
+   	    	post.className = post.className + " pushDown56";
+	    }
+
         }
 
     }
@@ -118,9 +130,11 @@
 	    errorLabel.innerHTML = "";
 	    errorLabel.appendChild(document.createTextNode("Posts must have a message."));
 	}else {
-	    errorLabel.innerHTML = "";
-	    username.value ="";
+	    if(!rememberMe.checked)
+		username.value ="";
 	    text.value = "";
+	    errorLabel.innerHTML = "";
+
             xhr({
 		method: "POST",
 		url: url,

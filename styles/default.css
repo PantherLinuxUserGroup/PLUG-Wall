@@ -3,6 +3,10 @@
   border: 1px black solid;
 }
 
+.plug-posts {
+    overflow-y:auto;
+}
+
 .plug-post {
   border: solid black 1px;
   padding: 10px 0px 0px 0px;
@@ -66,6 +70,7 @@
 .plug-post-body {
    border-bottom: 1px black solid;
    padding: 2px 5px 5px 5px;
+   word-wrap: break-word;
 }
 
 .plug-text {
@@ -117,7 +122,7 @@
 .appearDown {
     animation-duration: 1s;
     -moz-animation-duration: 1s;
-    -webkit-animation-duration: 1s;
+    -webkit-animation-duration: 1.5s;
 
     animation-name: appeardown;
     -moz-animation-name: appeardown;
@@ -125,16 +130,71 @@
 }
 
 @keyframes appeardown {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+	opacity: 0;
+	transform: translateY(-200px);
+    }
+    to {
+	opacity: 1;
+	transform: translateY(0);
+    }
 }
 
 @-moz-keyframes appeardown {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+	opacity: 0;
+	-moz-transform: translateY(-200px);
+    }
+    to {
+	opacity: 1;
+	-moz-transform: translateY(0);
+    }
 }
 
 @-webkit-keyframes appeardown {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+	opacity: 0;
+	-webkit-transform: translateY(-200px);
+    }
+    to {
+	opacity: 1;
+	-webkit-transform: translateY(0);
+    }
+}
+
+.pushDown56 {
+    animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -webkit-animation-duration: 2s;
+
+    animation-name: pushdown56;
+    -moz-animation-name: pushdown56;
+    -webkit-animation-name: pushdown56;
+}
+
+@keyframes pushdown56 {
+    from {
+	-webkit-transform: translateY(0);
+    }
+    to {
+	-webkit-transform: translateY(56px);
+    }
+}
+
+@-moz-keyframes pushdown56 {
+    from {
+	-webkit-transform: translateY(0);
+    }
+    to {
+	-webkit-transform: translateY(56px);
+    }
+}
+
+@-webkit-keyframes pushdown56 {
+    from {
+	-webkit-transform: translateY(-56px);
+    }
+    to {
+	-webkit-transform: translateY(0);
+    }
 }
