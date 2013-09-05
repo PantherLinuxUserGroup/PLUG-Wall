@@ -162,37 +162,37 @@
     }
 }
 
-.pushDown56 {
+.pushDown {
     animation-duration: 1s;
     -moz-animation-duration: 1s;
-    -webkit-animation-duration: 2s;
+    -webkit-animation-duration: 1s;
 
-    animation-name: pushdown56;
-    -moz-animation-name: pushdown56;
-    -webkit-animation-name: pushdown56;
+    animation-name: pushdown;
+    -moz-animation-name: pushdown;
+    -webkit-animation-name: pushdown;
 }
 
-@keyframes pushdown56 {
+@keyframes pushdown {
     from {
-	-webkit-transform: translateY(-56px);
+	transform: translateY(0);
     }
     to {
-	-webkit-transform: translateY(0);
+	transform: translateY(0);
     }
 }
 
-@-moz-keyframes pushdown56 {
+@-moz-keyframes pushdown {
     from {
-	-webkit-transform: translateY(-56px);
+	-moz-transform: translateY(0);
     }
     to {
-	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
     }
 }
 
-@-webkit-keyframes pushdown56 {
+@-webkit-keyframes pushdown {
     from {
-	-webkit-transform: translateY(-56px);
+	-webkit-transform: translateY(0);
     }
     to {
 	-webkit-transform: translateY(0);

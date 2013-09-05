@@ -112,13 +112,48 @@
             postsNode.appendChild(post);
 	    if(i == posts.length -1) {
 	    	post.className = post.className + " appearDown";
+
+		// var pushDownAmount = post["clientHeight"];
+		// updateKFRule("pushdown", pushDownAmount * -1);
 	    }
 	    else {
-   	    	post.className = post.className + " pushDown56";
+   	    	post.className = post.className + " pushDown";
 	    }
-
         }
+    }
 
+
+
+    function updateKFRule(rule , amount) {
+	if(amount) {
+	    var keyframes = findKeyFrame(rule);
+	    keyframes.deleteRule("from");
+	    if(keyframes.type == window.CSSRule.MOZ_KEYFRAMES_RULE)
+		keyframes.insertRule("from {-moz-transform:"+
+				     "translateY(" + amount + "px);}");
+	    else if(keyframes.type == window.CSSRule.WEBKIT_KEYFRAMES_RULE)
+		keyframes.insertRule("from {-webkit-transform:"+
+		     "translateY(" + amount + "px);}");
+	    else
+		keyframes.insertRule("from {transform:"+
+		     "translateY(" + amount + "px);}");
+	}
+    }
+
+    function findKeyFrame(rule) {
+	var css = document.styleSheets;
+	for(var i = css.length - 1; i >= 0; i--)
+	{
+	    for(var j = 0; j < css[i].cssRules.length; j++) {
+	    	//found rule to replace
+	    	if(css[i].cssRules[j].type ==
+	    	   window.CSSRule.MOZ_KEYFRAMES_RULE &&
+	    	   css[i].cssRules[j].name == rule) {
+	    	    return css[i].cssRules[j];
+	    	}
+	    }
+	}
+	return null;
     }
 
     function sendPost() {
@@ -156,8 +191,5 @@
             }
         }
         req.send(options.data);
-
     }
-
-
 })(window);
