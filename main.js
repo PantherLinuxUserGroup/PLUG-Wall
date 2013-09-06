@@ -112,9 +112,8 @@
             postsNode.appendChild(post);
 	    if(i == posts.length -1) {
 	    	post.className = post.className + " appearDown";
-
-		// var pushDownAmount = post["clientHeight"];
-		// updateKFRule("pushdown", pushDownAmount * -1);
+		var pushDownAmount = post["clientHeight"];
+		updateKFRule("pushdown", pushDownAmount * -1);
 	    }
 	    else {
    	    	post.className = post.className + " pushDown";
@@ -161,7 +160,7 @@
         data.user = username.value;
         data.message = text.value;
 
-	if(data.message == null || data.message.trim() == "") {
+	if(!data.message) {
 	    errorLabel.innerHTML = "";
 	    errorLabel.appendChild(document.createTextNode("Posts must have a message."));
 	}else {
