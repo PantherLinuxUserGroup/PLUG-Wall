@@ -1,7 +1,7 @@
 (function(window) {
 
     var node,
-        url;
+    url;
     var headerNode = document.createElement("div");
     var postsNode = document.createElement("div");
     var form = document.createElement("div");
@@ -127,15 +127,20 @@
 	if(amount) {
 	    var keyframes = findKeyFrame(rule);
 	    keyframes.deleteRule("from");
-	    if(keyframes.type == window.CSSRule.MOZ_KEYFRAMES_RULE)
-		keyframes.insertRule("from {-moz-transform:"+
-				     "translateY(" + amount + "px);}");
-	    else if(keyframes.type == window.CSSRule.WEBKIT_KEYFRAMES_RULE)
+	    if(keyframes.type == window.CSSRule.MOZ_KEYFRAMES_RULE) {
+                if(keyframes.appendRule) {
+                    keyframes.appendRule("from {-moz-transform:"+
+				         "translateY(" + amount + "px);}", 1);
+                }
+            }
+	    else if(keyframes.type == window.CSSRule.WEBKIT_KEYFRAMES_RULE) {
 		keyframes.insertRule("from {-webkit-transform:"+
-		     "translateY(" + amount + "px);}");
-	    else
+		                     "translateY(" + amount + "px);}");
+            }
+	    else {
 		keyframes.insertRule("from {transform:"+
-		     "translateY(" + amount + "px);}");
+		                     "translateY(" + amount + "px);}");
+            }
 	}
     }
 
@@ -145,9 +150,10 @@
 	{
 	    for(var j = 0; j < css[i].cssRules.length; j++) {
 	    	//found rule to replace
-	    	if(css[i].cssRules[j].type ==
-	    	   window.CSSRule.MOZ_KEYFRAMES_RULE &&
-	    	   css[i].cssRules[j].name == rule) {
+	    	if((css[i].cssRules[j].type == window.CSSRule.WEBKIT_KEYFRAMES_RULE
+                    || css[i].cssRules[j].type ==  window.CSSRule.MOZ_KEYFRAMES_RULE
+                    || css[i].cssRules[j].type ==  window.CSSRule.KEYFRAMES_RULE)
+                   && css[i].cssRules[j].name == rule) {
 	    	    return css[i].cssRules[j];
 	    	}
 	    }
@@ -182,11 +188,11 @@
         req.open(options.method, options.url, true);
         req.onreadystatechange = function() {
             if(req.readyState == 4) {
-              if( req.status == 200) {
-                  callback(req);
-              }else {
-                  //Some error
-              }
+                if( req.status == 200) {
+                    callback(req);
+                }else {
+                    //Some error
+                }
             }
         }
         req.send(options.data);
