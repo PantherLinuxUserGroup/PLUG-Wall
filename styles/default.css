@@ -34,6 +34,8 @@
 
 .plug-post-info {
     text-align:right;
+    word-wrap: break-word;
+    overflow: auto;
 }
 
 .plug-post-user {
