@@ -60,17 +60,16 @@ sudo pacman -S nodejs
 ```
 You will also need to install the server dependencies
 ```
-cd PLUG-Wall/src/server && npm install
+npm install
 ```
 Once you installed node.js and you cloned the project to your computer as described in the section about contributing,
 you can run the server.
 ```
-# Change your working directory to the root of the project
-cd PLUG-Wall
+# At the root of the project
 # Running the server
-nodejs src/server/index.js
+nodejs index.js
 
 # or sometimes node.js is installed as node
-node src/server/index.js
+node index.js
 ```
 Open your favorite browser and navigate to http://0.0.0.0:1337/
