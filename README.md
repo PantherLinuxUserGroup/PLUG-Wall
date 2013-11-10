@@ -50,7 +50,7 @@ You can now send a Pull Request from Github selecting your branch and to merge w
 
 Running the server
 ------------------
-To run the server you will need to install node.js. Visit [node.js's website](nodejs.org) or with your [package manager](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager). Be sure to get the latest version and have it installed as node.
+To run the server you will need to install node.js. Visit [node.js's website](http://nodejs.org) or with your [package manager](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager). Be sure to get the latest version and have it installed as node.
 
 You will also need to install the server dependencies
 ```bash
