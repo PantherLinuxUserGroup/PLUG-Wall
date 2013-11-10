@@ -50,26 +50,17 @@ You can now send a Pull Request from Github selecting your branch and to merge w
 
 Running the server
 ------------------
-To run the server you will need to install node.js
-```
-# Assuming you are using Ubuntu or Debian based distros
-sudo apt-get install nodejs
+To run the server you will need to install node.js. Visit [node.js's website](nodejs.org) or with your [package manager](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager). Be sure to get the latest version and have it installed as node.
 
-# Arch Linux
-sudo pacman -S nodejs
-```
 You will also need to install the server dependencies
-```
+```bash
 npm install
 ```
 Once you installed node.js and you cloned the project to your computer as described in the section about contributing,
 you can run the server.
-```
+```bash
 # At the root of the project
 # Running the server
-nodejs index.js
-
-# or sometimes node.js is installed as node
-node index.js
+npm start
 ```
 Open your favorite browser and navigate to http://0.0.0.0:1337/
