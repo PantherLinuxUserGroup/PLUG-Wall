@@ -1,19 +1,20 @@
 {
-  "name" : "PLUG-Wall",
-  "version" : "0.0.1",
-  "description" : "A simple JavaScript widget based message board",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/PantherLinuxUserGroup/PLUG-Wall.git"
+  "name": "PLUG-Wall",
+  "version": "0.0.1",
+  "description": "A simple JavaScript widget based message board",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PantherLinuxUserGroup/PLUG-Wall.git"
   },
   "scripts": {
-    "start" : "node index.js",
-    "test" : "./node_modules/.bin/mocha"
+    "start": "node index.js",
+    "test": "./node_modules/.bin/mocha --reporter spec"
   },
-  "dependencies" : {
-    "moment" : "2.1.0"
+  "dependencies": {
+    "moment": "2.1.0"
   },
-  "devDependencies" : {
-    "mocha" : "1.14.0"
+  "devDependencies": {
+    "mocha": "~1.14.0",
+    "should": "~2.0.2"
   }
 }
