@@ -1,7 +1,7 @@
-var server = require('./server');
-var router = require('./router');
-var Board = require('./board');
-var storageFactory = require('./storage');
+var server = require('./lib/server');
+var router = require('./lib/router');
+var Board = require('./lib/board');
+var storageFactory = require('./lib/storage');
 var config = require('./config.json');
 
 var boards = {};
