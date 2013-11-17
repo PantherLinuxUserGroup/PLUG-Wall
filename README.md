@@ -1,13 +1,13 @@
 PLUG-Wall
 =========
 
-Panther Linux User Group's Summer Open Source Project. 
+Panther Linux User Group's Summer Open Source Project.
 
 PLUG-Wall is an embeddable JavaScript based message board that can be included on any of your websites. There is two components, a server side which will store and recieve posts from the user and a client side script which will generate the HTML for the message board and allow users to send and get posts from the server.
 
 Contributing
 ------------
-To contribute to this project, press the fork button above on Github. This will be your own personal git repo to work on. 
+To contribute to this project, press the fork button above on Github. This will be your own personal git repo to work on.
 Then you will clone your project
 ```bash
 # Clone your own git repo, found on the top of your repo
@@ -33,7 +33,7 @@ To work on a new feature, create a branch on your repo
 git checkout -b <name-of-branch>
 ```
 
-The branch you have just created is where you will work on. Working on a branch allows you to keep your master as a mirror of the main project's master. 
+The branch you have just created is where you will work on. Working on a branch allows you to keep your master as a mirror of the main project's master.
 
 To locally merge your branch with the main project's upstream use
 ```bash
@@ -64,3 +64,20 @@ you can run the server.
 npm start
 ```
 Open your favorite browser and navigate to http://0.0.0.0:1337/
+
+Storage options
+---------------
+PLUG-Wall currently supports three storage options: memory, file, and redis. Storage preferences are saved on a per board basis. To change the prefered storage preference for a board, change the storage property of that board in config.json.
+
+__Memory__
+Memory storage is volatiles. Posts will only be available throught the lifetime of the PLUG-Wall instance. To use this type of storage change the storage property of the board to _memory_ in config.json
+
+__File__
+File storage is persistent. Posts will be saved to and retrieved from a file, thus, making the posts available even if the server fails or is restarted. To use this type of storage change the storage property of the board to _file_ in config.json
+
+__Redis__
+Redis storage is persistent. It uses the redis key-value store to save the post data. Currently, only local redis instances are supported. To use this type of storage change the storage property of the board to _redis_ in config.json. You will also need to install an instances of the redis server in the machine where Plug-WALL is running.
+```bash
+# Installing redis in Ubuntu
+apt-get install redis-server
+```
